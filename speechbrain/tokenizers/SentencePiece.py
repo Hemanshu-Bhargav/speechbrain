@@ -112,7 +112,7 @@ class SentencePiece:
         char_format_input=False,
         character_coverage=1.0,
         user_defined_symbols=None,
-        max_sentencepiece_length=20000,
+        max_sentencepiece_length=700,
         bos_id=-1,
         eos_id=-1,
         pad_id=-1,
