@@ -40,7 +40,7 @@ class CustomModel(torch.nn.Module):
         embedding_dim=128,
         rnn_size=256,
         layers=2,
-        output_dim=1000,
+        output_dim=625,
         return_hidden=False,
     ):
         super().__init__()
