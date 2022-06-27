@@ -322,10 +322,6 @@ def dataio_prepare(hparams):
         sig = sb.dataio.dataio.read_audio(wav)
         if info.num_channels > 1:
             sig = torch.mean(sig, dim=1)
-        resampled = torchaudio.transforms.Resample(
-            info.sample_rate, hparams["sample_rate"],
-        )(sig)
-        sig = resampled
         return sig
 
     # Define text processing pipeline. We start from the raw text and then
