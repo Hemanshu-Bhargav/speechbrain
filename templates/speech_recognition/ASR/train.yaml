@@ -2,7 +2,7 @@
 # Model: E2E ASR with attention-based ASR
 # Encoder: CRDNN
 # Decoder: GRU + beamsearch + RNNLM
-# Tokens: 625 BPE (Changed from 1000 by Hemanshu (740 if using TORGO, UASpeech and HomeService))
+# Tokens: 512 BPE (Changed from 1000 by Hemanshu (740 if using TORGO, UASpeech and HomeService))
 # losses: CTC+ NLL
 # Training: mini-librispeech
 # Pre-Training: librispeech 960h
@@ -90,7 +90,7 @@ dnn_blocks: 2
 dnn_neurons: 512
 emb_size: 128
 dec_neurons: 1024
-output_neurons: 624  # Number of tokens (same as LM)
+output_neurons: 512  # Number of tokens (same as LM)
 blank_index: 0
 bos_index: 0
 eos_index: 0
