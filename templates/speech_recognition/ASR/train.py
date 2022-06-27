@@ -46,6 +46,7 @@ Authors
 import os
 import sys
 import torch
+import torchaudio
 import logging
 import speechbrain as sb
 from hyperpyyaml import load_hyperpyyaml
