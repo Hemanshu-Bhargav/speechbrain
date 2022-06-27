@@ -54,7 +54,7 @@ rnn_size: 512 # dimension of hidden layers
 layers: 2 # number of hidden layers
 
 # Outputs
-output_neurons: 1000 # index(blank/eos/bos) = 0
+output_neurons: 625 # index(blank/eos/bos) = 0
 blank_index: 0
 bos_index: 0
 eos_index: 0
