@@ -2,7 +2,7 @@
 # Model: E2E ASR with attention-based ASR
 # Encoder: CRDNN
 # Decoder: GRU + beamsearch + RNNLM
-# Tokens: 1000 BPE
+# Tokens: 512 BPE (Changed from 1000 by Hemanshu (740 if using TORGO, UASpeech and HomeService))
 # losses: CTC+ NLL
 # Training: mini-librispeech
 # Pre-Training: librispeech 960h
@@ -35,7 +35,7 @@ train_log: !ref <output_folder>/train_log.txt
 # speechbrain HuggingFace repository. However, a local path pointing to a
 # directory containing the lm.ckpt and tokenizer.ckpt may also be specified
 # instead. E.g if you want to use your own LM / tokenizer.
-pretrained_path: speechbrain/asr-crdnn-rnnlm-librispeech
+#pretrained_path: speechbrain/asr-crdnn-rnnlm-librispeech
 
 
 # Path where data manifest files will be stored. The data manifest files are created by the
@@ -90,7 +90,7 @@ dnn_blocks: 2
 dnn_neurons: 512
 emb_size: 128
 dec_neurons: 1024
-output_neurons: 1000  # Number of tokens (same as LM)
+output_neurons: 512  # Number of tokens (same as LM)
 blank_index: 0
 bos_index: 0
 eos_index: 0
@@ -323,13 +323,13 @@ checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
 # This object is used to pretrain the language model and the tokenizers
 # (defined above). In this case, we also pretrain the ASR model (to make
 # sure the model converges on a small amount of data)
-pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
-    collect_in: !ref <save_folder>
-    loadables:
-        lm: !ref <lm_model>
-        tokenizer: !ref <tokenizer>
-        model: !ref <model>
-    paths:
-        lm: !ref <pretrained_path>/lm.ckpt
-        tokenizer: !ref <pretrained_path>/tokenizer.ckpt
-        model: !ref <pretrained_path>/asr.ckpt
+#pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
+#    collect_in: !ref <save_folder>
+#    loadables:
+#        lm: !ref <lm_model>
+#        tokenizer: !ref <tokenizer>
+#        model: !ref <model>
+#    paths:
+#        lm: !ref <pretrained_path>/lm.ckpt
+#        tokenizer: !ref <pretrained_path>/tokenizer.ckpt
+#        model: !ref <pretrained_path>/asr.ckpt
