@@ -14,9 +14,9 @@ from speechbrain.dataio.dataio import read_audio
 
 
 logger = logging.getLogger(__name__)
-MINILIBRI_TRAIN_URL = "/content/drive/MyDrive/UASpeech"
-MINILIBRI_VALID_URL = "/content/drive/MyDrive/HomeService"
-MINILIBRI_TEST_URL = "/content/drive/MyDrive/TORGO"
+MINILIBRI_TRAIN_URL = "/content/drive/MyDrive/UASpeech/UASpeech"
+MINILIBRI_VALID_URL = "/content/drive/MyDrive/HomeService/HomeService"
+MINILIBRI_TEST_URL = "/content/drive/MyDrive/TORGO/TORGO"
 #MINILIBRI_TEST_URL = "/content/drive/MyDrive/Dysarthric_Prepare/test.json"
 SAMPLERATE = 16000
 def prepare_mini_librispeech(
@@ -47,9 +47,9 @@ def prepare_mini_librispeech(
         return
     '''
     # If the dataset doesn't exist yet, download it
-    train_folder = os.path.join(data_folder, "/content/drive/MyDrive/UASpeech")
-    valid_folder = os.path.join(data_folder, "/content/drive/MyDrive/HomeService")
-    test_folder = os.path.join(data_folder, "/content/drive/MyDrive/TORGO")
+    train_folder = os.path.join(data_folder, "/content/drive/MyDrive/UASpeech/UASpeech")
+    valid_folder = os.path.join(data_folder, "/content/drive/MyDrive/HomeService/HomeService")
+    test_folder = os.path.join(data_folder, "/content/drive/MyDrive/TORGO/TORGO")
     if not check_folders(train_folder, valid_folder, test_folder):
         download_mini_librispeech(data_folder)
     '''
@@ -157,9 +157,9 @@ def download_mini_librispeech(destination):
     destination : str
         Place to put dataset.
     """
-    train_archive = os.path.join(destination, "/content/drive/MyDrive/UASpeech")
-    valid_archive = os.path.join(destination, "/content/drive/MyDrive/HomeService")
-    test_archive = os.path.join(destination, "/content/drive/MyDrive/TORGO")
+    train_archive = os.path.join(destination, "/content/drive/MyDrive/UASpeech/UASpeech")
+    valid_archive = os.path.join(destination, "/content/drive/MyDrive/HomeService/HomeService")
+    test_archive = os.path.join(destination, "/content/drive/MyDrive/TORGO/TORGO")
     download_file(MINILIBRI_TRAIN_URL, train_archive)
     download_file(MINILIBRI_VALID_URL, valid_archive)
     download_file(MINILIBRI_TEST_URL, test_archive)
