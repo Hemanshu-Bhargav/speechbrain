@@ -46,6 +46,7 @@ Authors
 import os
 import sys
 import torch
+import torchaudio
 import logging
 import speechbrain as sb
 from hyperpyyaml import load_hyperpyyaml
@@ -318,8 +319,10 @@ def dataio_prepare(hparams):
     @sb.utils.data_pipeline.takes("wav")
     @sb.utils.data_pipeline.provides("sig")
     def audio_pipeline(wav):
-        """Load the audio signal. This is done on the CPU in the `collate_fn`."""
+        info = torchaudio.info(wav)
         sig = sb.dataio.dataio.read_audio(wav)
+        if info.num_channels > 1:
+            sig = torch.mean(sig, dim=1)
         return sig
 
     # Define text processing pipeline. We start from the raw text and then
@@ -443,8 +446,8 @@ if __name__ == "__main__":
     # you can train from scratch and avoid this step.
     # We download the pretrained LM from HuggingFace (or elsewhere depending on
     # the path given in the YAML file). The tokenizer is loaded at the same time.
-    run_on_main(hparams["pretrainer"].collect_files)
-    hparams["pretrainer"].load_collected(device=run_opts["device"])
+    #run_on_main(hparams["pretrainer"].collect_files)
+    #hparams["pretrainer"].load_collected(device=run_opts["device"])
 
     # Trainer initialization
     asr_brain = ASR(
