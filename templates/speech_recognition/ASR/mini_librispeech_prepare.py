@@ -14,10 +14,9 @@ from speechbrain.dataio.dataio import read_audio
 
 
 logger = logging.getLogger(__name__)
-MINILIBRI_TRAIN_URL = "/content/drive/MyDrive/UASpeech"
-MINILIBRI_VALID_URL = "/content/drive/MyDrive/HomeService"
-MINILIBRI_TEST_URL = "/content/drive/MyDrive/TORGO"
-#MINILIBRI_TEST_URL = "/content/drive/MyDrive/Dysarthric_Prepare/test.json"
+MINILIBRI_TRAIN_URL = "/content/speechbrain/templates/speech_recognition/ASR/UASpeech"
+MINILIBRI_VALID_URL = "/content/speechbrain/templates/speech_recognition/ASR/HomeService"
+MINILIBRI_TEST_URL = "/content/speechbrain/templates/speech_recognition/ASR/TORGO"
 SAMPLERATE = 16000
 def prepare_mini_librispeech(
     data_folder, save_json_train, save_json_valid, save_json_test
@@ -47,9 +46,9 @@ def prepare_mini_librispeech(
         return
     '''
     # If the dataset doesn't exist yet, download it
-    train_folder = os.path.join(data_folder, "/content/drive/MyDrive/UASpeech")
-    valid_folder = os.path.join(data_folder, "/content/drive/MyDrive/HomeService")
-    test_folder = os.path.join(data_folder, "/content/drive/MyDrive/TORGO")
+    train_folder = os.path.join(data_folder, "/content/speechbrain/templates/speech_recognition/ASR/UASpeech")
+    valid_folder = os.path.join(data_folder, "/content/speechbrain/templates/speech_recognition/ASR/HomeService")
+    test_folder = os.path.join(data_folder, "/content/speechbrain/templates/speech_recognition/ASR/TORGO")
     if not check_folders(train_folder, valid_folder, test_folder):
         download_mini_librispeech(data_folder)
     '''
@@ -57,7 +56,7 @@ def prepare_mini_librispeech(
     logger.info(
         f"Creating {save_json_train}, {save_json_valid}, and {save_json_test}"
     )
-    
+
     extension = [".flac"]
     # List of flac audio files
     wav_list_train = get_all_files(train_folder, match_and=extension)
@@ -67,7 +66,7 @@ def prepare_mini_librispeech(
     extension = [".trans.txt"]
     trans_list = get_all_files(data_folder, match_and=extension)
     trans_dict = get_transcription(trans_list)
-    
+
     # Create the json files
     create_json(wav_list_train, trans_dict, save_json_train)
     create_json(wav_list_valid, trans_dict, save_json_valid)
@@ -157,9 +156,9 @@ def download_mini_librispeech(destination):
     destination : str
         Place to put dataset.
     """
-    train_archive = os.path.join(destination, "/content/drive/MyDrive/UASpeech")
-    valid_archive = os.path.join(destination, "/content/drive/MyDrive/HomeService")
-    test_archive = os.path.join(destination, "/content/drive/MyDrive/TORGO")
+    train_archive = os.path.join(destination, "/content/speechbrain/templates/speech_recognition/ASR/UASpeech")
+    valid_archive = os.path.join(destination, "/content/speechbrain/templates/speech_recognition/ASR/HomeService")
+    test_archive = os.path.join(destination, "/content/speechbrain/templates/speech_recognition/ASR/TORGO")
     download_file(MINILIBRI_TRAIN_URL, train_archive)
     download_file(MINILIBRI_VALID_URL, valid_archive)
     download_file(MINILIBRI_TEST_URL, test_archive)
