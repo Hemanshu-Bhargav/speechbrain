@@ -14,9 +14,9 @@ from speechbrain.dataio.dataio import read_audio
 
 
 logger = logging.getLogger(__name__)
-MINILIBRI_TRAIN_URL = "/content/drive/MyDrive/UASpeech"
-MINILIBRI_VALID_URL = "/content/drive/MyDrive/HomeService"
-MINILIBRI_TEST_URL = "/content/drive/MyDrive/TORGO"
+MINILIBRI_TRAIN_URL = "/content/speechbrain/templates/speech_recognition/ASR/UASpeech"
+MINILIBRI_VALID_URL = "/content/speechbrain/templates/speech_recognition/ASR/HomeService"
+MINILIBRI_TEST_URL = "/content/speechbrain/templates/speech_recognition/ASR/TORGO"
 #MINILIBRI_TEST_URL = "/content/drive/MyDrive/Dysarthric_Prepare/test.json"
 SAMPLERATE = 16000
 def prepare_mini_librispeech(
