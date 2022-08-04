@@ -323,13 +323,13 @@ checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
 # This object is used to pretrain the language model and the tokenizers
 # (defined above). In this case, we also pretrain the ASR model (to make
 # sure the model converges on a small amount of data)
-#pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
-#    collect_in: !ref <save_folder>
-#    loadables:
-#        lm: !ref <lm_model>
-#        tokenizer: !ref <tokenizer>
-#        model: !ref <model>
-#    paths:
-#        lm: !ref <pretrained_path>/lm.ckpt
-#        tokenizer: !ref <pretrained_path>/tokenizer.ckpt
-#        model: !ref <pretrained_path>/asr.ckpt
+pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
+    collect_in: !ref <save_folder>
+    loadables:
+        lm: !ref <lm_model>
+        tokenizer: !ref <tokenizer>
+        model: !ref <model>
+    paths:
+        lm: !ref <pretrained_path>/lm.ckpt
+        tokenizer: !ref <pretrained_path>/tokenizer.ckpt
+        model: !ref <pretrained_path>/asr.ckpt
