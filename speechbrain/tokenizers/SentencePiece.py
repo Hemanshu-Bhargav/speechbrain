@@ -105,7 +105,7 @@ class SentencePiece:
     def __init__(
         self,
         model_dir,
-        vocab_size,
+        vocab_size=500,
         annotation_train=None,
         annotation_read=None,
         model_type="unigram",
