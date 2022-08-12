@@ -49,12 +49,12 @@ test_dataloader_opts:
     batch_size: 1
 
 # Model parameters
-emb_dim: 256 # dimension of the embeddings
-rnn_size: 256 # dimension of hidden layers
+emb_dim: 128 # dimension of the embeddings
+rnn_size: 128 # dimension of hidden layers
 layers: 2 # number of hidden layers
 
 # Outputs
-output_neurons: 512 # index(blank/eos/bos) = 0
+output_neurons: 256 # index(blank/eos/bos) = 0
 blank_index: 0
 bos_index: 0
 eos_index: 0
