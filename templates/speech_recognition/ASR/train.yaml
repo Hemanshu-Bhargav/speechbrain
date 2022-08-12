@@ -78,19 +78,19 @@ n_mels: 40
 activation: !name:torch.nn.LeakyReLU
 dropout: 0.15
 cnn_blocks: 2
-cnn_channels: (128, 256)
+cnn_channels: (32, 64)
 inter_layer_pooling_size: (2, 2)
 cnn_kernelsize: (3, 3)
 time_pooling_size: 4
 rnn_class: !name:speechbrain.nnet.RNN.LSTM
 rnn_layers: 4
-rnn_neurons: 1024
+rnn_neurons: 256
 rnn_bidirectional: True
 dnn_blocks: 2
-dnn_neurons: 512
-emb_size: 128
-dec_neurons: 1024
-output_neurons: 512  # Number of tokens (same as LM)
+dnn_neurons: 128
+emb_size: 32
+dec_neurons: 256
+output_neurons: 256  # Number of tokens (same as LM)
 blank_index: 0
 bos_index: 0
 eos_index: 0
@@ -232,9 +232,9 @@ lm_model: !new:speechbrain.lobes.models.RNNLM.RNNLM
     activation: !name:torch.nn.LeakyReLU
     dropout: 0.0
     rnn_layers: 2
-    rnn_neurons: 2048
+    rnn_neurons: 512
     dnn_blocks: 1
-    dnn_neurons: 512
+    dnn_neurons: 128
     return_hidden: True  # For inference
 
 # Beamsearch is applied on the top of the decoder. If the language model is
