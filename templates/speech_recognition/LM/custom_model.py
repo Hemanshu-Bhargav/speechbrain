@@ -37,10 +37,10 @@ class CustomModel(torch.nn.Module):
 
     def __init__(
         self,
-        embedding_dim=128,
-        rnn_size=256,
+        embedding_dim=32,
+        rnn_size=64,
         layers=2,
-        output_dim=512,
+        output_dim=256,
         return_hidden=False,
     ):
         super().__init__()
